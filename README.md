@@ -1,62 +1,103 @@
-# Assessment 4: Django
-- **Craigslist Jr**
+# Assessment 4 : React.js
+
+PokeDex React Clone:
+
+- In this project, we will create a PokeDex clone utilizing the [PokeAPI](https://pokeapi.co/), [AXIOS](https://axios-http.com/docs/intro), and the [Vite + React Framework](https://vitejs.dev/guide/)!
 
 ## Important Grading Information
-- Make sure you read the [Assessment-4 Grading Rubric](https://docs.google.com/spreadsheets/d/11bCD5tstmbPhq8eqQD6NswuFOhiBLEBZv56ujREpPtQ/edit?usp=sharing).
-  - Django Front-End (50%)
-  - Django Back-End (50%)
+
+- Make sure to read the [Assessment-4 Rubric](https://docs.google.com/spreadsheets/d/1Z7COdAS6DrTt-MDTlXwpx0J3v-tbhl4y96tV0kfEGrw/edit#gid=0)
 - You need to get a 75% or better to pass. (You must pass all assessments in order to graduate Code Platoon's program.)
-- If you fail the assessment, you have can retake it once to improve your score. For this assessment... 
-  - 5% penalty: If you complete and submit the retake within **one week** of receiving your grade. 
+- There will be one retake available for this assessment.
+  - 5% penalty: If you complete and submit the retake within one week of receiving your grade.
   - 10% penalty: If you complete and submit the retake afterwards.
 
 ## Rules / Process
+
 - This test is fully open notes and open Google, but is not to be completed with the help of other students/individuals
-- Do not open a pull request against this repository.
 
 ## Requirements
-- This assessment must be completed using Django. 
-- You must use a PostgreSQL for your database.
-  - **You MUST name your database the following: assessment_four**. This enables us to streamline our grading process. **You may fail the assessment** if you do not correctly name your database.
-  - Make sure you provide some seed data using Django fixtures 
-- You **must** include a requirements.txt file with all Python dependencies for your project so instructors can successfully build & run your application.
-- If your assessment does anything extra, you **must** include instructions on how to build & run your project so that instructors can successfully build & run your application.
+
+- PAGES:
+  - Home Page
+    - Displays an ordered list of 30 links tags of Pokemon names
+  - Pokemon Page
+    - Displays a `Pokemon Card`
+  - PokemonTeam Page
+    - Displays a list of captured `Pokemon Cards` (NO MORE THAN 6 POKEMON AND NO REPETITIVE POKEMON COULD BE CAUGHT)
+- COMPONENTS:
+  - Header
+    - Displays 'POKEDEX' and a search bar utilized to search for pokemon.
+    - This component must persist throughout all pages.
+  - Pokemon Card
+    - Displays a pokemons image
+    - Background Color matching the pokemons type (fire -> red)
+    - Displays a `CardContent` component
+    - Displays 2 buttons at the bottom of the card:
+      - Home Button -> link to the HomePage
+      - Catch / Release Button -> Will add a Pokemon to the captured Pokemon list `OR` remove it from the captured list
+  - CardContent
+    - Displays Card Body showing the following:
+      - Pokemon name
+      - Pokemons first 4 moves
+- Tools to be Utilized:
+  1. React
+  2. Axios + PokeAPI
+  3. useEffect, useState
+  4. React Router
+  5. useParams
+  6. Props
+
+
+## Running Tests
+
+To run tests, first ensure you install `vitest` into your project.
+
+```bash
+  npm install vitest
+```
+
+Now in your `package.json`  add the following key to your scripts
+```json
+ "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    // Here we are adding the test command to run with npm
+    "test": "vitest"
+  },
+```
+
+Now ensure the `__test_unit__` folder is inside your `src` folder in your project, then go through each testing file and ensure the functions and imports correlate with your project.
+
+
+Finally run the test suite with the following command
+```bash
+  npm test
+```
 
 ## Challenge
-Everyone loves going on Craigslist to find interesting people and interesting items. 
-The joy of Craigslist is that it doesn't upgrade itself to stay up to date with the times - it's the same old Craigslist that everyone knows and loves. 
-The core schema has also remained relatively unchanged over the years. 
-Today, you will build a basic Craigslist CRUD app with nested routes. We will call this site: Craigslist Junior.
 
-You will need to build several routes for this project. 
-The following routes should return HTML pages when the user navigates their browser there. 
-These URLs are intended to be readable by humans.
-- `GET /`: A welcome page that lists all of the categories (with links to the categories)
-- `GET /categories/new`: A page with a form to create a new category
-- `GET /categories/<int:category_id>/view`: A page to view the detail of a specific category and a list of all of its associated posts (with links to those posts)
-- `GET /categories/<int:category_id>/edit`: A page with a form to update a specific category, with current values filled in already. Also include the ability to delete the specific category from this page. 
-- `GET /categories/<int:category_id>/posts/new`: A page with a form to create a new post for this category.
-- `GET /categories/<int:category_id>/posts/<int:post_id>/view`: A page to view the details of a specific post. Also include the ability go back to the parent category detail page (`/categories/<int:category_id/>/view`).
-- `GET /categories/<int:category_id>/posts/<int:post_id>/edit`: A page with a form to update a specific post, with the post's current title and content filled in already. Also include the ability to delete the specific post from here.
+In this challenge we will build a PokeDex clone with React.js! Yes, I know super exciting.
 
-The following routes should return JSON data when the client sends an AJAX request.
-These URLs are intended to conform to RESTful conventions. We'll learn more about RESTful API design later. 
-- `GET /categories` : returns a list of all categories. 
-- `GET /categories/<int:category_id>` : returns details about a single category.
-- `POST /categories` : Creates a new category. The request body should specify the name of the new category.
-- `PUT /categories/<int:category_id>` : Updates a category. The request body should specify the new name of the category.
-- `DELETE /categories/<int:category_id>` : Deletes a category. 
+User Stories:
 
-- `GET /posts` : Returns a list of all posts. If the user specifies a category_id in the query string, only return posts from that category.
-- `GET /posts/<int:post_id>` : Returns details about this specific post.
-- `POST /posts` : Creates a new post. The request body should specify the title and content of this post.
-- `PUT /posts/<int:post_id>` : Updates a post. The request body should specify the new title and content of the post.
-- `DELETE /posts/<int:post_id>` : Deletes a post. 
+- UPON OPENENING YOUR PROJECT
 
+  - User will see a header containing a title of 'POKEDEX' on the left, followed by a link to 'Home', a link to 'My Team', and finally on the right a searchbar to look up an individual pokemon by name or id.
+  - User will see a body displaying 30 pokemon names in a numbered list where the pokemon name will serve as a link to each individual pokemon.
 
+- UPON CLICKING ON A POKEMON LINK || SEARCHING FOR A POKEMON
 
-Make sure your application has proper links on pages. The user should never have to type in the browser's address bar to get to pages (aside from getting to the home page). Also provide proper re-routing, i.e. for creating, updating, or deleting data... all actions should automatically redirect to another appropriate page, if successful, or display an error message if unsuccessful.
+  - User will be sent to a seperate page where the desired pokemon will be displayed in a Pokemon Card.
 
-Also, please make sure you supply some seed data for your project (using [Django Fixtures](https://docs.djangoproject.com/en/4.0/howto/initial-data/)).
+- UPON CLICKING ON "CATCH / RELEASE" BUTTON
 
-You do not need to style your pages (as Craigslist really doesn't make an effort to), as long as your content and functionality is accessible.
+  - User will either add or remove the selected pokemon from their pokemon party.
+
+- UPON CLICKING ON 'MY TEAM' LINK
+
+  - User will be sent to a seperate page where each pokemon in their pokemon party will be displayed in a Pokemon Card.
+
+- UPON CLICKING ON 'HOME' LINK || BUTTON
+  - - User will see a body displaying 30 pokemon names in a numbered list where the pokemon name will serve as a link to each individual pokemon.
