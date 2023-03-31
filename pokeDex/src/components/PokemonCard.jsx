@@ -1,32 +1,26 @@
 import { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
-import { CardContent } from "./CardContent";
+import { PokemonCardContent } from "./PokemonCardContent";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 export const pickBackGroundColor = (type) => {
-  switch (type) {
-    case "grass":
-      return "green";
-    case "fire":
-      return "red";
-    case "electric":
-      return "yellow";
-    case "earth":
-      return "brown";
-    case "rock":
-      return "brown";
-    case "water":
-      return "blue";
-    case "dragon":
-      return "purple";
-    case "poison":
-      return "purple";
-    case "flying":
-      return "cyan";
-    default:
-      return "silver";
+  const pokemon_types_to_color = {
+    "grass" : 'green',
+    'fire' : 'red',
+    'electric' : 'yellow',
+    'ground' : 'brown',
+    'rock' : 'brown',
+    'water': 'blue',
+    'psychic' : 'purple',
+    'poison' : 'purple',
+    'dragon' : 'silver',
+    'steel' : 'silver',
+    'flying' : 'cyan',
+    'ice' : 'cyan',
+    'normal' : 'gray'
   }
+  return pokemon_types_to_color[type]
 };
 
 export const addOrDropPokemonToMyTeam = (
@@ -57,7 +51,7 @@ export const PokemonCard = ({
   setCaughtPokemon,
 }) => {
   const [backgroundColor, setBackGroundColor] = useState("white");
-  let pokeInfo = {
+  const pokemonInformation = {
     name: name,
     type: type,
     moveOne: moveOne,
@@ -74,7 +68,7 @@ export const PokemonCard = ({
   return (
     <Card style={{ width: "30vw", backgroundColor }}>
       <Card.Img variant="top" src={pokemonImg} />
-      <CardContent
+      <PokemonCardContent
         name={name}
         moveOne={moveOne}
         moveTwo={moveTwo}
@@ -87,7 +81,7 @@ export const PokemonCard = ({
       <Button
         variant="outline-dark"
         onClick={() =>
-          addOrDropPokemonToMyTeam(pokeInfo, caughtPokemon, setCaughtPokemon)
+          addOrDropPokemonToMyTeam(pokemonInformation, caughtPokemon, setCaughtPokemon)
         }
       >
         Catch / Release

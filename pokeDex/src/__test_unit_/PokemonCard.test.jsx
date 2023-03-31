@@ -17,7 +17,7 @@ describe("pickBackGroundColor()", () => {
       "grass",
       "fire",
       "electric",
-      "earth",
+      "ground",
       "rock",
       "water",
       "dragon",
@@ -32,9 +32,9 @@ describe("pickBackGroundColor()", () => {
       "brown",
       "brown",
       "blue",
-      "purple",
-      "cyan",
       "silver",
+      "cyan",
+      "gray",
       "purple",
     ];
     let testArr = [];
