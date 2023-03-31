@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header caughtPokemon={caughtPokemon} />
         <div>
           <Routes>
             <Route path="/" element={<Home />} />

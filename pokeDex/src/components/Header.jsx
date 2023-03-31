@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
+export const Header = ({caughtPokemon}) => {
   const [pokemonName, setPokemonName] = useState("");
 
   return (
@@ -17,7 +17,7 @@ export const Header = () => {
     >
       <h1> POKEDEX </h1>
       <Link to="/">Home</Link>
-      <Link to="/team/">My Team</Link>
+      <Link to="/team/">My Team #{caughtPokemon.length}</Link>
       <Form
         className="d-flex"
         onSubmit={(e) => [

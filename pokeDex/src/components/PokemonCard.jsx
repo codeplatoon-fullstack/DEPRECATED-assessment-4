@@ -6,21 +6,21 @@ import { Link } from "react-router-dom";
 
 export const pickBackGroundColor = (type) => {
   const pokemon_types_to_color = {
-    "grass" : 'green',
-    'fire' : 'red',
-    'electric' : 'yellow',
-    'ground' : 'brown',
-    'rock' : 'brown',
-    'water': 'blue',
-    'psychic' : 'purple',
-    'poison' : 'purple',
-    'dragon' : 'silver',
-    'steel' : 'silver',
-    'flying' : 'cyan',
-    'ice' : 'cyan',
-    'normal' : 'gray'
-  }
-  return pokemon_types_to_color[type]
+    grass: "green",
+    fire: "red",
+    electric: "yellow",
+    ground: "brown",
+    rock: "brown",
+    water: "blue",
+    psychic: "purple",
+    poison: "purple",
+    dragon: "silver",
+    steel: "silver",
+    flying: "cyan",
+    ice: "cyan",
+    normal: "gray",
+  };
+  return pokemon_types_to_color[type];
 };
 
 export const addOrDropPokemonToMyTeam = (
@@ -28,12 +28,12 @@ export const addOrDropPokemonToMyTeam = (
   caughtPokemon,
   setCaughtPokemon
 ) => {
-  if (caughtPokemon.length < 6) {
-    if (caughtPokemon.some((poke) => poke.name === pokeInfo.name)) {
-      setCaughtPokemon(
-        caughtPokemon.filter((pokemon) => pokemon.name !== pokeInfo.name)
-      );
-    } else {
+  if (caughtPokemon.some((poke) => poke.name === pokeInfo.name)) {
+    setCaughtPokemon(
+      caughtPokemon.filter((pokemon) => pokemon.name !== pokeInfo.name)
+    );
+  } else {
+    if (caughtPokemon.length < 6) {
       setCaughtPokemon([...caughtPokemon, pokeInfo]);
     }
   }
@@ -81,7 +81,11 @@ export const PokemonCard = ({
       <Button
         variant="outline-dark"
         onClick={() =>
-          addOrDropPokemonToMyTeam(pokemonInformation, caughtPokemon, setCaughtPokemon)
+          addOrDropPokemonToMyTeam(
+            pokemonInformation,
+            caughtPokemon,
+            setCaughtPokemon
+          )
         }
       >
         Catch / Release
