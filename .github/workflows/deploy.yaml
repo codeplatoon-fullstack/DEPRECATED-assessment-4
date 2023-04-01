@@ -52,6 +52,9 @@ jobs:
         with:
           # Upload dist repository
           path: './pokeDex/dist'
+          ACTIONS_RUNNER_DEBUG: true
       - name: Deploy to GitHub Pages
         id: deployment
+        cache-dependency-path: './pokeDex/package-lock.json'
         uses: actions/deploy-pages@v1
+        
