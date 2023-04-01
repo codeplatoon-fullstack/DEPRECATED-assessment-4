@@ -36,7 +36,6 @@ jobs:
           node-version: 18
           cache-dependency-path: './pokeDex/package-lock.json'
           cache: 'npm'
-          # cache-dependency-path: './pokeDex/package-lock.json'
       - name: Install and run Build dependencies
         working-directory: pokeDex
         run: |
@@ -52,10 +51,7 @@ jobs:
         with:
           # Upload dist repository
           path: './pokeDex/dist'
-          ACTIONS_RUNNER_DEBUG: true
       - name: Deploy to GitHub Pages
         id: deployment
-        # path: './pokeDex/dist'
-        # cache-dependency-path: './pokeDex/package-lock.json'
         uses: actions/deploy-pages@v1
         
