@@ -1,6 +1,10 @@
 import { PokemonCard } from "../components/PokemonCard";
+import { useContext } from "react";
+import { myPokemon } from "../App";
 
-export const PokemonTeam = ({ caughtPokemon, setCaughtPokemon }) => {
+export const PokemonTeam = () => {
+  const {caughtPokemon} = useContext(myPokemon)
+  
   return (
     <div>
       <h2>MY POKEMON TEAM</h2>
@@ -16,8 +20,6 @@ export const PokemonTeam = ({ caughtPokemon, setCaughtPokemon }) => {
               moveTwo={pokemon.moveTwo}
               moveThree={pokemon.moveThree}
               moveFour={pokemon.moveFour}
-              caughtPokemon={caughtPokemon}
-              setCaughtPokemon={setCaughtPokemon}
             />
           ))
         ) : (

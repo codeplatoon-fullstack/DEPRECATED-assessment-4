@@ -1,11 +1,12 @@
-import { useState } from "react";
 import "../App.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export const Header = ({ caughtPokemon }) => {
   const [pokemonName, setPokemonName] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div
@@ -16,18 +17,23 @@ export const Header = ({ caughtPokemon }) => {
       }}
     >
       <h1> POKEDEX </h1>
-      <Link to="/">Home</Link>
-      <Link to="/team/">My Team #{caughtPokemon.length}</Link>
-      <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
+      <Link to="/assessment-4/">Home</Link>
+      <Link to="/assessment-4/team/">My Team #{caughtPokemon.length}</Link>
+      <Form
+        className="d-flex"
+        onSubmit={(e) => [
+          e.preventDefault(),
+          navigate(`/assessment-4/pokemon/${pokemonName}/`),
+          setPokemonName(""),
+        ]}
+      >
         <Form.Control
           className="me-2"
           placeholder="search"
           value={pokemonName}
           onChange={(e) => setPokemonName(e.target.value)}
         />
-        <Link to={`/pokemon/${pokemonName}/`}>
-          <Button onClick={() => setPokemonName("")}>Search</Button>
-        </Link>
+        <Button type="submit">Search</Button>
       </Form>
     </div>
   );

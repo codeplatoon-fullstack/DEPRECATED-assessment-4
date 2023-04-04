@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Card from "react-bootstrap/Card";
 import { PokemonCardContent } from "./PokemonCardContent";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { myPokemon } from "../App";
 
 export const pickBackGroundColor = (type) => {
   const pokemon_types_to_color = {
@@ -47,10 +48,11 @@ export const PokemonCard = ({
   moveThree,
   moveFour,
   pokemonImg,
-  caughtPokemon,
-  setCaughtPokemon,
 }) => {
+  const { caughtPokemon } = useContext(myPokemon);
+  const { setCaughtPokemon } = useContext(myPokemon);
   const [backgroundColor, setBackGroundColor] = useState("white");
+  const navigate = useNavigate()
   const pokemonInformation = {
     name: name,
     type: type,
@@ -75,9 +77,7 @@ export const PokemonCard = ({
         moveThree={moveThree}
         moveFour={moveFour}
       />
-      <Button variant="outline-primary">
-        <Link to="/">Home</Link>
-      </Button>
+      <Button variant="outline-primary" onClick={()=>navigate('/assessment-4/')}>Home</Button>
       <Button
         variant="outline-dark"
         onClick={() =>
